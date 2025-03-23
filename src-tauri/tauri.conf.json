@@ -15,14 +15,14 @@
     "windows": [
       {
         "title": "OpenMate",
-        "width": 800,
-        "height": 600,
+        "width": 440,
+        "height": 400,
         "transparent": true,
         "titleBarStyle": "Transparent",
         "skipTaskbar": true,
         "alwaysOnTop": true,
         "decorations": false,
-        "maximized": true,
+        "maximized": false,
         "shadow": false
       }
     ],

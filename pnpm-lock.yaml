@@ -11,6 +11,9 @@ importers:
       '@pixiv/three-vrm':
         specifier: ^3.3.6
         version: 3.3.6(three@0.174.0)
+      '@pixiv/three-vrm-animation':
+        specifier: ^3.3.6
+        version: 3.3.6(three@0.174.0)
       '@tauri-apps/api':
         specifier: ^2
         version: 2.4.0
@@ -186,6 +189,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@pixiv/three-vrm-animation@3.3.6':
+    resolution: {integrity: sha512-1s0c5/hbYEYBkCchzDYJ7o7KRZOSXw4G8t07ihELL5vbj6Orc5d3X3nGLV9W78TpoE8n5EoJgJyFOy2az7G2/w==}
+    peerDependencies:
+      three: '>=0.137'
+
   '@pixiv/three-vrm-core@3.3.6':
     resolution: {integrity: sha512-8k8F6miMLHH/GMdPUE59vdIthgOYwHyakCgYBzyfUvJbHq7NDjxb2O/7NA4ATa+KlwEg8x4/cuLM2cM6wFjLUw==}
     peerDependencies:
@@ -239,8 +247,14 @@ packages:
   '@pixiv/types-vrmc-springbone-extended-collider-1.0@3.3.6':
     resolution: {integrity: sha512-hM8L+NWXwT2Yg1GuIr62U+X01VhiQK1wMaNBX81toUKYjd1uXPokDTBaksvd+4K5Sl/BtGMNlW/barL3mJ6sBg==}
 
+  '@pixiv/types-vrmc-vrm-1.0@2.0.3':
+    resolution: {integrity: sha512-RMP34Bk1qLFQv/CRB1Zqvn2qMFfWQfP2Hms5QrrfoBsW9XroZdEe0zPLNbGmUPYh4F7VtBb+B7+RCuymRtpehA==}
+
   '@pixiv/types-vrmc-vrm-1.0@3.3.6':
     resolution: {integrity: sha512-9au2C8wGvS1fWxjPXAMpikYUZIZlGfYOa9ekeajNVDeFLj5jKXmTBNd9Ufx5Ai4+LRBUdfewlFl1cY7mgcQjWg==}
+
+  '@pixiv/types-vrmc-vrm-animation-1.0@3.3.6':
+    resolution: {integrity: sha512-xjz/88JtZsHLkIwOHA8RaQa84zcmpn7FLabsrregSlpImfskQBoKc7hk+glLKuZ4s9buLPrQTr3EVE8mlnNWkQ==}
 
   '@rollup/rollup-android-arm-eabi@4.36.0':
     resolution: {integrity: sha512-jgrXjjcEwN6XpZXL0HUeOVGfjXhPyxAbbhD0BlXUB+abTOpbPiN5Wb3kOT7yb+uEtATNYF5x5gIfwutmuBA26w==}
@@ -594,6 +608,13 @@ snapshots:
   '@esbuild/win32-x64@0.25.1':
     optional: true
 
+  '@pixiv/three-vrm-animation@3.3.6(three@0.174.0)':
+    dependencies:
+      '@pixiv/three-vrm-core': 3.3.6(three@0.174.0)
+      '@pixiv/types-vrmc-vrm-1.0': 3.3.6
+      '@pixiv/types-vrmc-vrm-animation-1.0': 3.3.6
+      three: 0.174.0
+
   '@pixiv/three-vrm-core@3.3.6(three@0.174.0)':
     dependencies:
       '@pixiv/types-vrm-0.0': 3.3.6
@@ -651,7 +672,13 @@ snapshots:
 
   '@pixiv/types-vrmc-springbone-extended-collider-1.0@3.3.6': {}
 
+  '@pixiv/types-vrmc-vrm-1.0@2.0.3': {}
+
   '@pixiv/types-vrmc-vrm-1.0@3.3.6': {}
+
+  '@pixiv/types-vrmc-vrm-animation-1.0@3.3.6':
+    dependencies:
+      '@pixiv/types-vrmc-vrm-1.0': 2.0.3
 
   '@rollup/rollup-android-arm-eabi@4.36.0':
     optional: true

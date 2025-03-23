@@ -5,7 +5,7 @@ pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
             let main_window = app.get_webview_window("main").unwrap();
-            let _ = main_window.set_ignore_cursor_events(true);
+            // let _ = main_window.set_ignore_cursor_events(true);
 
             // let monitors = main_window.available_monitors().unwrap();
 

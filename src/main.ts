@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
-import { VRMLoaderPlugin, VRMUtils } from '@pixiv/three-vrm';
+import { VRMLoaderPlugin, VRMUtils, VRM } from '@pixiv/three-vrm';
 
 const renderer = new THREE.WebGLRenderer({
   alpha: true,
@@ -16,12 +16,6 @@ document.body.appendChild( renderer.domElement );
 const camera = new THREE.PerspectiveCamera( 30.0, window.innerWidth / window.innerHeight, 0.1, 20.0 );
 camera.position.set( 0.0, 1.0, 5.0 );
 
-// camera controls
-const controls = new OrbitControls( camera, renderer.domElement );
-controls.screenSpacePanning = true;
-controls.target.set( 0.0, 1.0, 0.0 );
-controls.update();
-
 // scene
 const scene = new THREE.Scene();
 scene.background = null;
@@ -31,7 +25,7 @@ const light = new THREE.DirectionalLight( 0xffffff, Math.PI );
 light.position.set( 1.0, 1.0, 1.0 ).normalize();
 scene.add( light );
 
-let currentVrm = undefined;
+let currentVrm: VRM | undefined = undefined;
 const loader = new GLTFLoader();
 
 // Install a GLTFLoader plugin that enables VRM support
@@ -46,7 +40,7 @@ loader.load(
   // called when the resource is loaded
   (gltf) => {
     // retrieve a VRM instance from gltf
-    const vrm = gltf.userData.vrm;
+    const vrm: VRM = gltf.userData.vrm;
 
     // VRMUtils.removeUnnecessaryVertices( gltf.scene );
     // VRMUtils.combineSkeletons( gltf.scene );

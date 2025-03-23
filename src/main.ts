@@ -53,11 +53,11 @@ loader.load(
     // VRMUtils.combineMorphs( vrm );
 
     // Disable frustum culling
-    vrm.scene.traverse( ( obj ) => {
+    // vrm.scene.traverse( ( obj ) => {
+    //   obj.frustumCulled = false;
+    // } );
 
-      obj.frustumCulled = false;
-
-    } );
+    vrm.scene.rotation.y = Math.PI;
 
     // add the loaded vrm to the scene
     currentVrm = vrm;

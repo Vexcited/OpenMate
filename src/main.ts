@@ -1,16 +1,16 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/Addons.js';
-import { VRMLoaderPlugin, VRMUtils, VRM } from '@pixiv/three-vrm';
+import { VRMLoaderPlugin, VRM } from '@pixiv/three-vrm';
 
 const renderer = new THREE.WebGLRenderer({
   alpha: true,
   antialias: true
 });
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setPixelRatio( window.devicePixelRatio );
-renderer.setClearColor( 0x000000, 0.0 );
-document.body.appendChild( renderer.domElement );
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setClearColor(0x000000, 0.0);
+document.body.appendChild(renderer.domElement);
 
 // camera
 const camera = new THREE.PerspectiveCamera( 30.0, window.innerWidth / window.innerHeight, 0.1, 20.0 );
@@ -39,17 +39,7 @@ loader.load(
 
   // called when the resource is loaded
   (gltf) => {
-    // retrieve a VRM instance from gltf
     const vrm: VRM = gltf.userData.vrm;
-
-    // VRMUtils.removeUnnecessaryVertices( gltf.scene );
-    // VRMUtils.combineSkeletons( gltf.scene );
-    // VRMUtils.combineMorphs( vrm );
-
-    // Disable frustum culling
-    // vrm.scene.traverse( ( obj ) => {
-    //   obj.frustumCulled = false;
-    // } );
 
     vrm.scene.rotation.y = Math.PI;
 
@@ -69,26 +59,19 @@ loader.load(
 );
 
 // helpers
-// const gridHelper = new THREE.GridHelper( 10, 10 );
-// scene.add( gridHelper );
+const gridHelper = new THREE.GridHelper( 10, 10 );
+scene.add( gridHelper );
 
-// const axesHelper = new THREE.AxesHelper( 5 );
-// scene.add( axesHelper );
-
-// animate
 const clock = new THREE.Clock();
 clock.start();
 
 function animate() {
+  requestAnimationFrame(animate);
 
-  requestAnimationFrame( animate );
+  if (currentVrm)
+    currentVrm.update(clock.getDelta());
 
-  // update vrm components
-  if (currentVrm) {
-    currentVrm.update( clock.getDelta() );
-  }
-
-  renderer.render( scene, camera );
+  renderer.render(scene, camera);
 }
 
 animate();
